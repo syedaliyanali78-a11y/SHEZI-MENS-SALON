@@ -1,0 +1,304 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHEZI MENS SALON | Luxury Men's Grooming & Stylist</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207',
+                        },
+                        dark: {
+                            900: '#0a0a0c',
+                            800: '#121216',
+                            700: '#1a1a22',
+                            600: '#262633',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #e5e7eb;
+            font-family: 'Inter', sans-serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #eab308 50%, #ca8a04 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-gradient {
+            border-image: linear-gradient(to right, #eab308, #ca8a04) 1;
+        }
+        .glass-card {
+            background: rgba(18, 18, 22, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(234, 179, 8, 0.15);
+        }
+        .glass-card:hover {
+            border-color: rgba(234, 179, 8, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(234, 179, 8, 0.15);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- Navigation Header -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300 glass-card bg-opacity-90 border-b border-gold-500/20" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-500/40 flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <i class="fa-solid font-bold fa-scissors text-gold-400 text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-serif font-bold tracking-wider gold-gradient-text uppercase block">SHEZI</span>
+                        <span class="text-[9px] tracking-[0.25em] text-gray-400 uppercase -mt-1 block">Mens Salon & Grooming</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Home</a>
+                    <a href="#about" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">About</a>
+                    <a href="#services" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Services & Packages</a>
+                    <a href="#reviews" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Reviews</a>
+                    <a href="#location" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <button onclick="openBookingModal()" class="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-black bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 rounded-full overflow-hidden shadow-lg shadow-gold-500/20 hover:shadow-gold-500/40 hover:scale-[1.02] active:scale-95 transition-all">
+                        <i class="fa-regular fa-calendar-check mr-2"></i> Book Appointment
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-300 hover:text-gold-400 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-dark-800 border-b border-gold-500/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block py-2 text-base font-medium text-gray-300 hover:text-gold-400">Home</a>
+            <a href="#about" class="mobile-link block py-2 text-base font-medium text-gray-300 hover:text-gold-400">About</a>
+            <a href="#services" class="mobile-link block py-2 text-base font-medium text-gray-300 hover:text-gold-400">Services & Packages</a>
+            <a href="#reviews" class="mobile-link block py-2 text-base font-medium text-gray-300 hover:text-gold-400">Reviews</a>
+            <a href="#location" class="mobile-link block py-2 text-base font-medium text-gray-300 hover:text-gold-400">Location & Hours</a>
+            <button onclick="openBookingModal(); toggleMobileMenu();" class="w-full mt-4 px-6 py-3 text-center font-semibold text-black bg-gradient-to-r from-gold-400 to-gold-600 rounded-lg shadow-md">
+                Book Now
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+        <!-- Background Overlay & Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1920" alt="Barber Salon Shop" class="w-full h-full object-cover object-center opacity-25 filter brightness-75 scale-105 animate-pulse" style="animation-duration: 8s;">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-dark-900 via-transparent to-dark-900"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-xs sm:text-sm font-semibold tracking-wider uppercase mb-6 animate-bounce">
+                <i class="fa-solid fa-crown text-xs"></i> Premier Men's Styling & Grooming Salon
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold text-white tracking-tight leading-tight mb-6">
+                Redefining Elegance & <br>
+                <span class="gold-gradient-text italic">Master Grooming</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-gray-300 mb-10 leading-relaxed font-light">
+                Experience world-class hair styling, beard artistry, refreshing facials, and premium groom packages crafted specifically for modern men.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-black bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 rounded-full shadow-lg shadow-gold-500/25 hover:shadow-gold-500/50 hover:scale-105 active:scale-95 transition-all">
+                    <i class="fa-solid fa-scissors mr-2"></i> Book Your Session Now
+                </button>
+                <a href="https://wa.me/923130224133?text=Hi%20Shezi%20Mens%20Salon,%20I%20want%20to%20inquire%20about%20packages." target="_blank" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white bg-dark-700/80 hover:bg-dark-600 border border-gold-500/30 rounded-full transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-green-400 text-xl"></i> Chat On WhatsApp
+                </a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-10 border-t border-gold-500/20">
+                <div class="p-4 rounded-xl glass-card">
+                    <h3 class="text-3xl font-bold text-gold-400 font-serif">30.5K+</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">TikTok Likes</p>
+                </div>
+                <div class="p-4 rounded-xl glass-card">
+                    <h3 class="text-3xl font-bold text-gold-400 font-serif">100%</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">Client Satisfaction</p>
+                </div>
+                <div class="p-4 rounded-xl glass-card">
+                    <h3 class="text-3xl font-bold text-gold-400 font-serif">10+ Yrs</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">Master Experience</p>
+                </div>
+                <div class="p-4 rounded-xl glass-card">
+                    <h3 class="text-3xl font-bold text-gold-400 font-serif">VIP</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider mt-1"> Groom Packages</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Master Artist Section -->
+    <section id="about" class="py-20 bg-dark-800/50 border-y border-gold-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Artist Image Box -->
+                <div class="relative">
+                    <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-gold-500 to-amber-700 blur opacity-30"></div>
+                    <div class="relative rounded-2xl overflow-hidden border border-gold-500/30 bg-dark-900">
+                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800" alt="Shezi Hair Artist" class="w-full h-[450px] object-cover">
+                        <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-dark-900 via-dark-900/90 to-transparent">
+                            <span class="px-3 py-1 bg-gold-500 text-black font-bold text-xs rounded-full uppercase">Master Stylist</span>
+                            <h3 class="text-2xl font-bold text-white mt-2">Shezi Artist</h3>
+                            <p class="text-sm text-gold-400">Hair Artist & Makeup Specialist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 text-gold-400 text-sm font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-scissors"></i> Meet The Craftsman
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">
+                        Professional Hair Styling & Complete <span class="gold-gradient-text">Grooming Expertise</span>
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed">
+                        At <strong class="text-gold-400">SHEZI MENS SALON</strong>, grooming is an art form. Led by master stylist Shezi, we provide customized hair cutting, beard sculpting, facial treatments, and specialized groom makeover packages.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-300 gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 text-xs">✓</div>
+                            Precision Haircuts & Modern Fade Designs
+                        </li>
+                        <li class="flex items-center text-gray-300 gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 text-xs">✓</div>
+                            Specialized Groom & Bridal Makeover Packages
+                        </li>
+                        <li class="flex items-center text-gray-300 gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 text-xs">✓</div>
+                            Deep Cleansing Charcoal & Hydra Facials
+                        </li>
+                        <li class="flex items-center text-gray-300 gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 text-xs">✓</div>
+                            Hygienic & Premium Grooming Products
+                        </li>
+                    </ul>
+                    <div class="pt-4">
+                        <a href="tel:03130224133" class="inline-flex items-center gap-3 px-6 py-3 bg-dark-700 hover:bg-dark-600 border border-gold-500/30 rounded-lg text-white font-medium transition-all">
+                            <i class="fa-solid fa-phone text-gold-400"></i> Call Direct: 03130224133
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Packages Section -->
+    <section id="services" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-400 font-semibold text-xs uppercase tracking-widest">Premium Offerings</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-2">Services & Groom Packages</h2>
+                <p class="text-gray-400 mt-4">Select from our signature hair treatments, beard styling, or exclusive full-grooming packages.</p>
+            </div>
+
+            <!-- Grooming Packages Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Package 1 -->
+                <div class="glass-card rounded-2xl p-8 relative flex flex-col justify-between border-t-4 border-t-gold-500">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full">Essential</span>
+                        <h3 class="text-2xl font-serif font-bold text-white mt-4">Basic Hair & Beard</h3>
+                        <p class="text-gray-400 text-sm mt-2">Perfect for quick fresh styling and sharp looks.</p>
+                        
+                        <div class="my-6">
+                            <span class="text-3xl font-bold text-white">Rs. 1,500</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-gray-300 border-t border-gray-800 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Master Haircut & Wash</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Beard Sculpting & Razor Finish</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Hair Styling & Setting</li>
+                        </ul>
+                    </div>
+                    <button onclick="quickSelectService('Basic Hair & Beard Package', '1500')" class="mt-8 w-full py-3 bg-dark-700 hover:bg-gold-500 hover:text-black text-gold-400 font-semibold rounded-xl border border-gold-500/30 transition-all">
+                        Book Package
+                    </button>
+                </div>
+
+                <!-- Package 2 (VIP Popular) -->
+                <div class="glass-card rounded-2xl p-8 relative flex flex-col justify-between border-2 border-gold-500 shadow-2xl scale-105 bg-dark-800">
+                    <div class="absolute -top-4 right-6 bg-gradient-to-r from-gold-400 to-gold-600 text-black font-bold text-xs uppercase px-4 py-1.5 rounded-full shadow-lg">
+                        Most Popular
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full">VIP Experience</span>
+                        <h3 class="text-2xl font-serif font-bold text-white mt-4">Executive Grooming</h3>
+                        <p class="text-gray-400 text-sm mt-2">Complete head-to-toe refresh with facial care.</p>
+                        
+                        <div class="my-6">
+                            <span class="text-3xl font-bold text-gold-400">Rs. 4,500</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-gray-300 border-t border-gray-800 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Precision Haircut & Styling</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Beard Design & Hot Towel Treatment</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Deep Cleansing Facial Treatment</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Head & Shoulder Relaxation Massage</li>
+                        </ul>
+                    </div>
+                    <button onclick="quickSelectService('Executive Grooming Package', '4500')" class="mt-8 w-full py-3 bg-gradient-to-r from-gold-400 to-gold-600 hover:opacity-90 text-black font-bold rounded-xl shadow-lg transition-all">
+                        Book VIP Package
+                    </button>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="glass-card rounded-2xl p-8 relative flex flex-col justify-between border-t-4 border-t-gold-500">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full">Royal</span>
+                        <h3 class="text-2xl font-serif font-bold text-white mt-4">Groom Special Package</h3>
+                        <p class="text-gray-400 text-sm mt-2">Full wedding makeover for grooms & special events.</p>
+                        
+                        <div class="my-6">
+                            <span class="text-3xl font-bold text-white">Rs. 12,000+</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-gray-300 border-t border-gray-800 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Signature Groom Hair Styling</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Hydra Facial & Skin Polish</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-chec
